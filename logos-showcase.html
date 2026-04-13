@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sharma Group — Logo Showcase</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:     #0C0F10;
+      --light:  #F2EDE4;
+      --accent: #C8903A;
+      --text:   #EDE8DF;
+      --dark:   #1C2020;
+      --muted:  #706C68;
+      --border: #252D32;
+      --font-b: 'IBM Plex Sans', sans-serif;
+      --font-m: 'IBM Plex Mono', monospace;
+    }
+    body {
+      background: #111417;
+      color: var(--text);
+      font-family: var(--font-b);
+      -webkit-font-smoothing: antialiased;
+      padding: 3rem 2rem 5rem;
+      min-height: 100vh;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header { max-width: 900px; margin: 0 auto 3.5rem; }
+    .page-eyebrow {
+      font-family: var(--font-m);
+      font-size: .68rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .75rem;
+    }
+    .page-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .5rem;
+    }
+    .page-sub {
+      font-size: .92rem;
+      color: var(--muted);
+    }
+
+    /* ── LOGO SECTION ── */
+    .logo-section {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+    }
+    .logo-section-title {
+      font-family: var(--font-m);
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .logo-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── SWATCH GRID ── */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .swatch {
+      padding: 3.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .swatch-dark  { background: #0C0F10; }
+    .swatch-light { background: #F2EDE4; }
+    .swatch-label {
+      font-family: var(--font-m);
+      font-size: .6rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      opacity: .45;
+    }
+    .swatch-dark  .swatch-label { color: #EDE8DF; }
+    .swatch-light .swatch-label { color: #1C2020; }
+
+    /* ── SVG LOGO CONTAINERS ── */
+    .logo-wrap { display: flex; align-items: center; }
+    .logo-wrap svg { max-width: 100%; height: auto; }
+
+    /* ── SIZE VARIANTS ── */
+    .sizes {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+    }
+    .sizes-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 2.5rem 3rem;
+      background: #0C0F10;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .size-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .size-label {
+      font-family: var(--font-m);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      color: var(--muted);
+      width: 40px;
+      flex-shrink: 0;
+      text-transform: uppercase;
+    }
+
+    /* ── SPEC TABLE ── */
+    .specs {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .spec-card {
+      background: #151A1D;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+    .spec-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: .5rem 0;
+      border-bottom: 1px solid #1C2328;
+      font-size: .85rem;
+    }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-key { color: var(--muted); font-family: var(--font-m); font-size: .72rem; letter-spacing: .06em; }
+    .spec-val { color: var(--text); font-weight: 500; }
+    .spec-val.amber { color: var(--accent); }
+
+    /* ── COLOR PALETTE ── */
+    .palette {
+      max-width: 900px;
+      margin: 2.5rem auto 0;
+    }
+    .palette-swatches { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .color-block {
+      width: 60px; height: 60px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .color-name { font-family: var(--font-m); font-size: .62rem; letter-spacing: .06em; color: var(--muted); }
+    .color-hex  { font-family: var(--font-m); font-size: .72rem; color: var(--text); }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <p class="page-eyebrow">Brand Identity</p>
+  <h1 class="page-title">Sharma Group — Logo Options</h1>
+  <p class="page-sub">Two directions for review. Both work on dark and light backgrounds.</p>
+</div>
+
+<!-- ══════════════════════════════════════
+     LOGO V1
+══════════════════════════════════════ -->
+<div class="logo-section">
+  <p class="logo-section-title">Logo V1 — Mark + Wordmark</p>
+  <div class="swatch-grid">
+
+    <!-- Dark bg -->
+    <div class="swatch swatch-dark">
+      <span class="swatch-label">On dark background</span>
+      <div class="logo-wrap">
+        <!-- V1 dark version -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248 56" height="56">
+          <defs><style>@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap');</style></defs>
+          <line x1="3"  y1="49" x2="20" y2="7"  stroke="#EDE8DF" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="20" y1="7"  x2="37" y2="49" stroke="#C8903A" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="3"  y1="49" x2="37" y2="49" stroke="#C8903A" stroke-width="1" stroke-linecap="round" opacity=".35"/>
+          <line x1="51" y1="11" x2="51" y2="45" stroke="#252D32" stroke-width="1"/>
+          <text x="62" y="33" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="28" font-weight="700" fill="#EDE8DF" letter-spacing="-0.4">SHARMA</text>
+          <text x="62.5" y="49" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" font-weight="500" fill="#C8903A" letter-spacing="3.8">GROUP</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Light bg -->
+    <div class="swatch swatch-light">
+      <span class="swatch-label">On light background</span>
+      <div class="logo-wrap">
+        <!-- V1 light version -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248 56" height="56">
+          <line x1="3"  y1="49" x2="20" y2="7"  stroke="#1C2020" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="20" y1="7"  x2="37" y2="49" stroke="#C8903A" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="3"  y1="49" x2="37" y2="49" stroke="#C8903A" stroke-width="1" stroke-linecap="round" opacity=".45"/>
+          <line x1="51" y1="11" x2="51" y2="45" stroke="#C8C4BE" stroke-width="1"/>
+          <text x="62" y="33" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="28" font-weight="700" fill="#1C2020" letter-spacing="-0.4">SHARMA</text>
+          <text x="62.5" y="49" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" font-weight="500" fill="#C8903A" letter-spacing="3.8">GROUP</text>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- V1 size scale -->
+  <div style="margin-top:1px; padding:2rem 3rem; background:#0C0F10; border:1px solid var(--border); border-top:none; border-radius:0 0 8px 8px;">
+    <p class="logo-section-title" style="margin-bottom:1.5rem;">Scale</p>
+    <div style="display:flex; flex-direction:column; gap:1.75rem;">
+      <div style="display:flex; align-items:center; gap:1.5rem;">
+        <span style="font-family:var(--font-m);font-size:.58rem;letter-spacing:.1em;color:var(--muted);width:36px;text-transform:uppercase;">Full</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248 56" height="56">
+          <line x1="3" y1="49" x2="20" y2="7" stroke="#EDE8DF" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="20" y1="7" x2="37" y2="49" stroke="#C8903A" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="3" y1="49" x2="37" y2="49" stroke="#C8903A" stroke-width="1" stroke-linecap="round" opacity=".35"/>
+          <line x1="51" y1="11" x2="51" y2="45" stroke="#252D32" stroke-width="1"/>
+          <text x="62" y="33" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="28" font-weight="700" fill="#EDE8DF" letter-spacing="-0.4">SHARMA</text>
+          <text x="62.5" y="49" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" font-weight="500" fill="#C8903A" letter-spacing="3.8">GROUP</text>
+        </svg>
+      </div>
+      <div style="display:flex; align-items:center; gap:1.5rem;">
+        <span style="font-family:var(--font-m);font-size:.58rem;letter-spacing:.1em;color:var(--muted);width:36px;text-transform:uppercase;">Med</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248 56" height="38">
+          <line x1="3" y1="49" x2="20" y2="7" stroke="#EDE8DF" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="20" y1="7" x2="37" y2="49" stroke="#C8903A" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="3" y1="49" x2="37" y2="49" stroke="#C8903A" stroke-width="1" stroke-linecap="round" opacity=".35"/>
+          <line x1="51" y1="11" x2="51" y2="45" stroke="#252D32" stroke-width="1"/>
+          <text x="62" y="33" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="28" font-weight="700" fill="#EDE8DF" letter-spacing="-0.4">SHARMA</text>
+          <text x="62.5" y="49" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" font-weight="500" fill="#C8903A" letter-spacing="3.8">GROUP</text>
+        </svg>
+      </div>
+      <div style="display:flex; align-items:center; gap:1.5rem;">
+        <span style="font-family:var(--font-m);font-size:.58rem;letter-spacing:.1em;color:var(--muted);width:36px;text-transform:uppercase;">Sm</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 248 56" height="24">
+          <line x1="3" y1="49" x2="20" y2="7" stroke="#EDE8DF" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="20" y1="7" x2="37" y2="49" stroke="#C8903A" stroke-width="4.5" stroke-linecap="round"/>
+          <line x1="3" y1="49" x2="37" y2="49" stroke="#C8903A" stroke-width="1" stroke-linecap="round" opacity=".35"/>
+          <line x1="51" y1="11" x2="51" y2="45" stroke="#252D32" stroke-width="1"/>
+          <text x="62" y="33" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="28" font-weight="700" fill="#EDE8DF" letter-spacing="-0.4">SHARMA</text>
+          <text x="62.5" y="49" font-family="'IBM Plex Mono','Courier New',monospace" font-size="10" font-weight="500" fill="#C8903A" letter-spacing="3.8">GROUP</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     LOGO V2
+══════════════════════════════════════ -->
+<div class="logo-section">
+  <p class="logo-section-title">Logo V2 — Typographic</p>
+  <div class="swatch-grid">
+
+    <!-- Dark bg -->
+    <div class="swatch swatch-dark">
+      <span class="swatch-label">On dark background</span>
+      <div class="logo-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 78" height="78">
+          <defs><style>@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap');</style></defs>
+          <text x="0" y="52" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="54" font-weight="700" fill="#EDE8DF" letter-spacing="-1">SHARMA</text>
+          <rect x="0" y="57" width="212" height="1.5" fill="#C8903A"/>
+          <text x="1" y="70" font-family="'IBM Plex Mono','Courier New',monospace" font-size="9.5" font-weight="500" fill="#C8903A" letter-spacing="6.2">GROUP</text>
+          <text x="1" y="78" font-family="'IBM Plex Mono','Courier New',monospace" font-size="6.2" font-weight="400" fill="#4A4642" letter-spacing="1.8">WAREHOUSING · LOGISTICS · REAL ESTATE</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Light bg -->
+    <div class="swatch swatch-light">
+      <span class="swatch-label">On light background</span>
+      <div class="logo-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 78" height="78">
+          <text x="0" y="52" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="54" font-weight="700" fill="#1C2020" letter-spacing="-1">SHARMA</text>
+          <rect x="0" y="57" width="212" height="1.5" fill="#C8903A"/>
+          <text x="1" y="70" font-family="'IBM Plex Mono','Courier New',monospace" font-size="9.5" font-weight="500" fill="#C8903A" letter-spacing="6.2">GROUP</text>
+          <text x="1" y="78" font-family="'IBM Plex Mono','Courier New',monospace" font-size="6.2" font-weight="400" fill="#9A9690" letter-spacing="1.8">WAREHOUSING · LOGISTICS · REAL ESTATE</text>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- V2 size scale -->
+  <div style="margin-top:1px; padding:2rem 3rem; background:#0C0F10; border:1px solid var(--border); border-top:none; border-radius:0 0 8px 8px;">
+    <p class="logo-section-title" style="margin-bottom:1.5rem;">Scale</p>
+    <div style="display:flex; flex-direction:column; gap:1.75rem; align-items:flex-start;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 78" height="78">
+        <text x="0" y="52" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="54" font-weight="700" fill="#EDE8DF" letter-spacing="-1">SHARMA</text>
+        <rect x="0" y="57" width="212" height="1.5" fill="#C8903A"/>
+        <text x="1" y="70" font-family="'IBM Plex Mono','Courier New',monospace" font-size="9.5" font-weight="500" fill="#C8903A" letter-spacing="6.2">GROUP</text>
+        <text x="1" y="78" font-family="'IBM Plex Mono','Courier New',monospace" font-size="6.2" font-weight="400" fill="#4A4642" letter-spacing="1.8">WAREHOUSING · LOGISTICS · REAL ESTATE</text>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 78" height="52">
+        <text x="0" y="52" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="54" font-weight="700" fill="#EDE8DF" letter-spacing="-1">SHARMA</text>
+        <rect x="0" y="57" width="212" height="1.5" fill="#C8903A"/>
+        <text x="1" y="70" font-family="'IBM Plex Mono','Courier New',monospace" font-size="9.5" font-weight="500" fill="#C8903A" letter-spacing="6.2">GROUP</text>
+        <text x="1" y="78" font-family="'IBM Plex Mono','Courier New',monospace" font-size="6.2" font-weight="400" fill="#4A4642" letter-spacing="1.8">WAREHOUSING · LOGISTICS · REAL ESTATE</text>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 78" height="32">
+        <text x="0" y="52" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="54" font-weight="700" fill="#EDE8DF" letter-spacing="-1">SHARMA</text>
+        <rect x="0" y="57" width="212" height="1.5" fill="#C8903A"/>
+        <text x="1" y="70" font-family="'IBM Plex Mono','Courier New',monospace" font-size="9.5" font-weight="500" fill="#C8903A" letter-spacing="6.2">GROUP</text>
+        <text x="1" y="78" font-family="'IBM Plex Mono','Courier New',monospace" font-size="6.2" font-weight="400" fill="#4A4642" letter-spacing="1.8">WAREHOUSING · LOGISTICS · REAL ESTATE</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     COLOUR SPECS
+══════════════════════════════════════ -->
+<div class="specs" style="margin-bottom:3rem;">
+  <p class="logo-section-title">Colour Palette</p>
+  <div style="display:flex; gap:1.25rem; flex-wrap:wrap; padding:2rem 2.5rem; background:#151A1D; border:1px solid var(--border); border-radius:8px;">
+    <div class="color-swatch">
+      <div class="color-block" style="background:#C8903A;"></div>
+      <div class="color-name">Amber</div>
+      <div class="color-hex">#C8903A</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#EDE8DF; border-color:rgba(255,255,255,.12);"></div>
+      <div class="color-name">Warm White</div>
+      <div class="color-hex">#EDE8DF</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#0C0F10;"></div>
+      <div class="color-name">Charcoal</div>
+      <div class="color-hex">#0C0F10</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#1C2020;"></div>
+      <div class="color-name">Dark</div>
+      <div class="color-hex">#1C2020</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#9E6B22;"></div>
+      <div class="color-name">Deep Amber</div>
+      <div class="color-hex">#9E6B22</div>
+    </div>
+    <div class="color-swatch">
+      <div class="color-block" style="background:#F2EDE4; border-color:rgba(255,255,255,.12);"></div>
+      <div class="color-name">Paper</div>
+      <div class="color-hex">#F2EDE4</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SPEC TABLE
+══════════════════════════════════════ -->
+<div class="specs">
+  <p class="logo-section-title">Specifications</p>
+  <div class="specs-grid">
+    <div class="spec-card">
+      <p class="spec-title">Logo V1 — Mark + Wordmark</p>
+      <div class="spec-row"><span class="spec-key">Type</span><span class="spec-val">Icon + Text</span></div>
+      <div class="spec-row"><span class="spec-key">Mark</span><span class="spec-val">Dual-stroke chevron (building peak)</span></div>
+      <div class="spec-row"><span class="spec-key">Display font</span><span class="spec-val">Barlow Condensed 700</span></div>
+      <div class="spec-row"><span class="spec-key">Sub font</span><span class="spec-val">IBM Plex Mono 500</span></div>
+      <div class="spec-row"><span class="spec-key">Primary colour</span><span class="spec-val amber">Amber #C8903A</span></div>
+      <div class="spec-row"><span class="spec-key">Best use</span><span class="spec-val">Website nav, email sig, letterhead</span></div>
+    </div>
+    <div class="spec-card">
+      <p class="spec-title">Logo V2 — Typographic</p>
+      <div class="spec-row"><span class="spec-key">Type</span><span class="spec-val">Text only</span></div>
+      <div class="spec-row"><span class="spec-key">Dominant element</span><span class="spec-val">SHARMA — Barlow Condensed 700 54px</span></div>
+      <div class="spec-row"><span class="spec-key">Display font</span><span class="spec-val">Barlow Condensed 700</span></div>
+      <div class="spec-row"><span class="spec-key">Sub font</span><span class="spec-val">IBM Plex Mono 500</span></div>
+      <div class="spec-row"><span class="spec-key">Accent</span><span class="spec-val amber">Rule line #C8903A</span></div>
+      <div class="spec-row"><span class="spec-key">Best use</span><span class="spec-val">Hoardings, print, large format</span></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

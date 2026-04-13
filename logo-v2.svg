@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268 76" role="img" aria-label="Sharma Group">
+  <title>Sharma Group — Logo V2 (Typographic)</title>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap');
+      .sg-name { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; }
+      .sg-tag  { font-family: 'IBM Plex Mono', 'Courier New', monospace; }
+    </style>
+  </defs>
+
+  <!-- ── SHARMA — large bold condensed ── -->
+  <text x="0" y="52"
+        class="sg-name"
+        font-size="54" font-weight="700"
+        fill="#EDE8DF"
+        letter-spacing="-1">SHARMA</text>
+
+  <!-- ── Amber accent rule ── -->
+  <rect x="0" y="57" width="210" height="1.5" fill="#C8903A"/>
+
+  <!-- ── GROUP — small, very tracked, amber ── -->
+  <text x="1" y="70"
+        class="sg-tag"
+        font-size="9.5" font-weight="500"
+        fill="#C8903A"
+        letter-spacing="6.2">GROUP</text>
+
+  <!-- ── Tagline ── -->
+  <text x="1" y="76"  class="sg-tag"
+        font-size="6.2" font-weight="400"
+        fill="#706C68"
+        letter-spacing="1.8">WAREHOUSING · LOGISTICS · REAL ESTATE</text>
+</svg>

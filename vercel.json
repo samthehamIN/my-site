@@ -1,0 +1,11 @@
+{
+  "framework": null,
+  "functions": {
+    "api/generate-proposal.js": {
+      "maxDuration": 60
+    },
+    "api/approve-proposal.js": {
+      "maxDuration": 60
+    }
+  }
+}
