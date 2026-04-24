@@ -1,11 +1,9 @@
 'use strict';
 
-const nodemailer = require('nodemailer');
+const fetch = require('node-fetch');
 
-const RECIPIENTS = [
-  'Samridh.sharma@gmail.com',
-  'Samridh.sharma@sharmagrp.com'
-];
+const TO_EMAIL   = 'samridh.sharma@sharmagrp.com';
+const FROM_EMAIL = 'website@sharmagrp.com';
 
 module.exports = async function contactHandler(req, res) {
   const { name, email, company, size, type, message } = req.body || {};
@@ -14,16 +12,16 @@ module.exports = async function contactHandler(req, res) {
     return res.status(400).json({ error: 'Name and email are required.' });
   }
 
-  // Build email content
-  const subject = `New Enquiry from ${name}${company ? ' — ' + company : ''}`;
+  const subject  = `New Enquiry from ${name}${company ? ' — ' + company : ''}`;
+
   const textBody = [
     `New enquiry from the Sharma Group website`,
     ``,
     `Name:    ${name}`,
     `Email:   ${email}`,
     `Company: ${company || '—'}`,
-    `Size:    ${size   || '—'}`,
-    `Type:    ${type   || '—'}`,
+    `Size:    ${size    || '—'}`,
+    `Type:    ${type    || '—'}`,
     ``,
     `Message:`,
     message || '(none)',
@@ -43,40 +41,38 @@ module.exports = async function contactHandler(req, res) {
   <p style="font-size:12px;color:#999;margin-top:24px;">Sent from sharmagrp.com contact form</p>
 </div>`;
 
-  // Configure transporter — reads SMTP settings from environment variables
-  // Set in .env: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS
-  // For Gmail: SMTP_HOST=smtp.gmail.com, SMTP_PORT=587, SMTP_USER=your@gmail.com, SMTP_PASS=app-password
-  const transporter = nodemailer.createTransport({
-    host:   process.env.SMTP_HOST   || 'smtp.gmail.com',
-    port:   parseInt(process.env.SMTP_PORT || '587', 10),
-    secure: process.env.SMTP_SECURE === 'true',
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
-
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-    // No SMTP configured — log to console so nothing is lost
-    console.log('\n── New Enquiry (SMTP not configured) ──');
+  if (!process.env.RESEND_API_KEY) {
+    console.log('\n── New Enquiry (RESEND_API_KEY not set) ──');
     console.log(textBody);
-    console.log('───────────────────────────────────────\n');
+    console.log('───────────────────────────────────────────\n');
     return res.json({ ok: true, note: 'logged' });
   }
 
   try {
-    await transporter.sendMail({
-      from:    `"Sharma Group Website" <${process.env.SMTP_USER}>`,
-      to:      RECIPIENTS.join(', '),
-      replyTo: email,
-      subject,
-      text:    textBody,
-      html:    htmlBody,
+    const resp = await fetch('https://api.resend.com/emails', {
+      method:  'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type':  'application/json',
+      },
+      body: JSON.stringify({
+        from:     FROM_EMAIL,
+        to:       [TO_EMAIL],
+        reply_to: email,
+        subject,
+        text:     textBody,
+        html:     htmlBody,
+      }),
     });
+
+    if (!resp.ok) {
+      const errText = await resp.text();
+      throw new Error(`Resend ${resp.status}: ${errText}`);
+    }
+
     return res.json({ ok: true });
   } catch (err) {
     console.error('Contact email error:', err.message);
-    // Still log it so the lead isn't lost
     console.log('\n── Enquiry (email failed, logged) ──');
     console.log(textBody);
     console.log('─────────────────────────────────────\n');
