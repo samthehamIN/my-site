@@ -2,7 +2,7 @@
 
 const fetch = require('node-fetch');
 
-const TO_EMAIL   = 'samridh.sharma@sharmagrp.com';
+const TO_EMAIL   = 'samridh.sharma@gmail.com';
 const FROM_EMAIL = 'website@sharmagrp.com';
 
 module.exports = async function contactHandler(req, res) {
